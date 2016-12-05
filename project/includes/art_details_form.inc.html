@@ -1,0 +1,49 @@
+
+<?php   require_once(FUN_DEFS); ?>
+
+<form action = "<?php echo($_SERVER['PHP_SELF']);?>" method="post" enctype="multipart/form-data"> 
+    
+    <p><label>Art Title*:</label><br/>
+	<input data-validation="length" data-validation-length ="1-60" type="text" name="art_title" size="40" 
+               id="art_title"  /></p>
+   
+        
+	<p><label>Artwork Description*: (<span id="maxlength">500</span> characters left)</label><br/>
+            <textarea name="art_desc" id = "text-area" cols="100" rows="6" data-validation="required">
+                  </textarea></p>
+
+        <?php
+            if(basename(htmlspecialchars($_SERVER['PHP_SELF']))== 'update_producer_artwork.php'){
+                echo '<p><label>Producer Name*:</label><br/>
+                        <input data-validation="length" data-validation-length ="1-40" type="text" name="pub_name" size="30" 
+                                value="' . $b_pub_name .  '"/></p>   
+                                
+                    <p><label>Artwork Price(in US Dollars)*:</label><br/>
+                        <input data-validation="number" data-validation-allowing="float" type="text" name="art_price"
+                           value="' . $art_price. '"/></p> 
+                    
+                    <p><input type="submit" name="submit" value="Update" /></p>
+                                 <input type="hidden" name="a_id" value="' . $a_id . '" />';
+                                 
+            }        
+            if(basename(htmlspecialchars($_SERVER['PHP_SELF']))== 'update_artwork.php'){
+                 echo ' <p><label>Artist Name*:</label><br/>
+    <input data-validation="length" data-validation-length ="1-40" type="text" name="artist_name" size="30" 
+               id="$artist_name"  /></p></br>';
+               
+                echo '<p><input type="submit" name="submit" value="Update" /></p>
+                        <input type="hidden" name="a_id" value="' . $a_id . '" />';
+                
+            }elseif(basename(htmlspecialchars($_SERVER['PHP_SELF']))== 'add_artwork.php'){
+
+                echo ' <p><label>Artist Name*:</label><br/><input data-validation="length" data-validation-length ="1-40" type="text" name="artist_name" size="30" 
+               id="$artist_name"  /></p></br>';
+               
+                echo '<button type="submit"  name="submit" value="submit">Create</button>';
+            }elseif(basename(htmlspecialchars($_SERVER['PHP_SELF']))== 'update_artwork.php'){
+               
+                echo '<button type="submit"  name="submit" value="submit">Create</button>';
+            }
+        ?>
+	
+</form>

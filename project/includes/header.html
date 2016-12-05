@@ -1,0 +1,48 @@
+<?php 
+// This page begins the HTML header for the site.
+
+// Initialize a session:
+session_start();
+
+// Check for a $page_title value:
+if (!isset($page_title)) {
+	$page_title = 'Artzteca Studios Corp';
+}
+
+//requires function definition
+require_once (FUN_DEFS);
+?>
+
+<!DOCTYPE html><html lang="en">
+<head>
+<meta charset="utf-8">
+<meta content="IE=edge" http-equiv="X-UA-Compatible">
+<meta content="width=device-width, initial-scale=1" name="viewport">
+<meta content="" name="description">
+<meta content="" name="artist">
+<title><?php echo $page_title; ?></title>
+
+<style type="text/css" media="screen"> @import "../includes/css/style.css";</style>
+<!-- Latest compiled and minified CSS -->
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.4/css/bootstrap.min.css"/>
+<script src="https://code.jquery.com/jquery-1.11.2.min.js"></script>
+<script src="https://code.highcharts.com"></script>
+<script src="https://ajax.aspnetcdn.com/ajax/jquery.validate/1.13.1/jquery.validate.min.js"></script>
+<script type="text/javascript" src="../includes/js/emailValidation.js"></script>
+<!-- Optional themes -->
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.4/css/bootstrap-theme.min.css"/>
+
+<style type="text/css" media="screen"> @import "../includes/css/nav_justified.css";</style>
+<style type="text/css" media="screen">@import "../includes/css/carousel.css";</style>
+
+</head>
+<body>
+   <?php include('nav_bar_main.inc.html'); ?>
+    
+    <div class="container">
+        <div class="row">
+          <div class="col-md-9">
+              
+</body>
+</html>            
+        <!-- End of Header -->

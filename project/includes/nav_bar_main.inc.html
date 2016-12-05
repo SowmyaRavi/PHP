@@ -1,0 +1,57 @@
+    <div class="container">        
+        <div class="masthead">
+            <div class="row">                
+                <div class="col-md-8"><h1 class="text-danger"> ArtztecA Studios Corp</h1></div>
+                <div class="col-md-4">
+                    <?php
+                    require('cookie_function.inc.php');
+                    if(!empty($_SESSION)){
+                        echo (del_sess_if_exp());
+                    }
+                        elseif(isset($_COOKIE['last_loggedin']) && isset($_COOKIE['last_ip'])) {
+                        echo(last_login_info());
+                    }else{
+                        if(basename($_SERVER['PHP_SELF'])=="index.php"){
+                            echo (page_counter("count1",'/ass2/azteca/index.php'));
+                        }
+                        if(basename($_SERVER['PHP_SELF'])=="best_seller_list.php"){
+                            echo (page_counter("count2",'/ass2/azteca/best_seller_list.php'));
+                        }
+                    }
+                    ?>
+                </div>
+                
+            </div>
+            
+            <nav> 
+                
+                 <ul class="nav nav-justified">
+                    <li class="active">
+                        <a href="../azteca/index.php"><span class="glyphicon glyphicon-home"></span> Home</a>
+                    </li>
+                    <li>
+                        <a href="../azteca/about.php">Contact</a>
+                    </li>
+                    <li>
+                        <a href="../azteca/best_seller_list.php"><span class="glyphicon glyphicon-star"></span> Best Seller List <span class="glyphicon glyphicon-th-list"></span></a>
+                    </li>
+                    <li>
+                        <a href="../azteca/register.php"><span class="glyphicon glyphicon-user"></span>Sign-Up </a>
+                    </li>
+                    
+                    <?php
+                        if (!isset($_SESSION['user_level'])|| basename(htmlspecialchars($_SERVER['PHP_SELF']))== 'logout.php')
+                        {
+                            
+                        echo '<li><a href="../azteca/login.php"><span class="glyphicon glyphicon-log-in"></span> Login</a></li>';
+                        echo ' <li><a href="../azteca/events.php"><span class="glyphicon glyphicon-star"></span> Events </a></li>';
+                    
+                        }else{
+                              
+                        echo '<li><a href="../AztecaMember/logout.php"><span class="glyphicon glyphicon-log-out"></span> Logout </a></li>';
+                        } 
+                    ?>                    
+                </ul> 
+            </nav>
+        </div> 
+    </div>

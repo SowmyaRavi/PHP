@@ -1,0 +1,57 @@
+<div id="sidebar" class="col-md-3 col-md-3sidebar-offcanvas">
+                    <br>
+                    <div class="list-group" >
+                            
+                        <ul>
+                        <?php
+                            function glyphicon_func($href) {
+                                if (basename($_SERVER['PHP_SELF'])== $href){
+                                    $icon = '<span class="glyphicon glyphicon-hand-left"></span>';
+                                    }else{
+                                        $icon = "";
+                                    }
+                                return $icon;
+                            }
+                                if (isset($_SESSION['user_level'])){
+                                    
+                                    // Add links if the user is above member level
+                                        if ($_SESSION['user_level'] >= 10) {
+                                        
+                                        echo '<a class = "list-group-item list-group-item-success" href="../aztecaMember/order_artwork.php"><span class="glyphicon glyphicon-shopping-cart"></span>Shopping Area' . glyphicon_func('order_artwork.php') . '</a>                                              
+                                                <ul class="list-unstyled">
+                                                    <li><a href="../aztecaMember/order_artwork.php"> Order ArtWork </a>' . glyphicon_func('order_artwork.php') . '</li>   
+                                                                        
+                                                
+                                                <br></ul>';
+                                        }
+                                        if ($_SESSION['user_level'] >= 30) {
+                                        
+                                        echo '<a class = "list-group-item list-group-item-success" href="../aztecaArtist/artist_home.php"><span class="glyphicon glyphicon-user"></span> Artist Area' . glyphicon_func('artist_home.php') . ' </a>
+                                                <ul class="list-unstyled">
+                                                    <li><a href="../aztecaArtist/add_artwork.php"> Add New ArtWork </a>' . glyphicon_func('add_artwork.php') . '</li>  
+                                                    <li><a href="../aztecaArtist/manage_artist_artwork.php?id=' . $_SESSION['id'] . '"> Manage my ArtWork </a>' . glyphicon_func('manage_artist_artwork.php') . '</li> 
+                                                    <li><a href="../aztecaArtist/artwork_list.php">View all Artwork</a>' . glyphicon_func('artwork_list.php') . '</li> 
+
+                                                    
+                                                <br></ul>';
+                                        }
+                                        if($_SESSION['user_level'] >= 50){
+                                            echo '<a class = "list-group-item list-group-item-success" href="../aztecaProducer/producer_home.php"><span class="glyphicon glyphicon-user"></span> Producer\'s Area' . glyphicon_func('producer_home.php') . ' </a> 
+                                                    <ul class="list-unstyled">
+                                                        <li><a href="../aztecaProducer/manage_producer_artwork.php"> Manage My ArtWork </a>' . glyphicon_func('manage_producer_artwork.php') . '</li>
+                                                        <li><a href="../aztecaProducer/artwork_details.php"> ArtWork to Publish </a>' . glyphicon_func('artwork_deatils.php') . '</li> 
+                                                        <li><a href="../aztecaProducer/display_on_bestseller.php">Display on Bestseller Page</a>' . glyphicon_func('display_on_bestseller.php') . '</li> 
+                                                        
+                                                    <br></ul>';
+                                        }
+                                        if($_SESSION['user_level'] == 100){
+                                            echo '<a class="list-group-item list-group-item-success" href="../aztecaAdmin/admin_home.php"><span class="glyphicon glyphicon-user"></span> Admin\'s Area ' . glyphicon_func('admin_home.php') . ' </a> 
+                                                    <ul class="list-unstyled">
+                                                        <li><a href="../aztecaAdmin/manage_users.php?id=' . $_SESSION['id'] . '"> Manage Users </a>' . glyphicon_func('manage_users.php') . '</li>  
+                                                    <br></ul>';
+                                        }
+                                }
+                        ?>
+                        </ul>
+                     </div>
+                </div>
